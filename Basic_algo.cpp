@@ -3,13 +3,13 @@
 
 void show_list() ;
 void show_choices() ;
-void list_append() ;
-void list_insert() ;
-void list_delete() ;
-void list_sort() ;
-int list_search() ;
-void list_replace() ;
-void list_access() ;
+void list_append() ; //APPEND
+void list_insert() ; //INSERT
+void list_delete() ; //DELETE
+void list_sort() ; //SORT
+int list_search() ; //SEARCH
+void list_replace() ; //SEARCH
+void list_access() ; //ACCESS
 int size = 0 ;
 int num_list[10] ;
 
@@ -194,6 +194,7 @@ void list_access() {
         std::cout << "Number at index " << num_index << ": " << num_list[num_index] << std::endl ;
     }
 }
+
 
 
 
