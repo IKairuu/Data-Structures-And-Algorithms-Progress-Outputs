@@ -5,8 +5,8 @@
 
 std::string infix_to_postfix(std::string exp) ;
 char operators[5] = {'^', '*', '/', '+', '-'} ;
-int calculate_postfix(std::string expression) ;
-double calculate_nums(int top, int bottom, std::string ope) ;
+double calculate_postfix(std::string expression) ;
+double calculate_nums(double top, double bottom, std::string ope) ;
 int precedence(char ope) ;
 
 int main()
@@ -111,7 +111,7 @@ int precedence(char ope)
     return prec ;
 }
 
-int calculate_postfix(std::string expression)
+double calculate_postfix(std::string expression)
 {
     std::string stacks[expression.size()] ;
     int stack_size = -1 ;
@@ -138,7 +138,7 @@ int calculate_postfix(std::string expression)
             std::string ope(1, operators[ope_index]) ;
             if (nums[index] == ope)
             {
-                double answer = calculate_nums(std::stoi(stacks[stack_size]), std::stoi(stacks[stack_size-1]), ope) ;
+                double answer = calculate_nums(std::stod(stacks[stack_size]), std::stod(stacks[stack_size-1]), ope) ;
                 stack_size-- ;
                 stacks[stack_size] = std::to_string(answer) ;
                 found = true ;
@@ -152,10 +152,11 @@ int calculate_postfix(std::string expression)
             stacks[stack_size] = nums[index] ;
         }
     }
-    return std::stoi(stacks[0]) ;
+
+    return std::stod(stacks[0]) ;
 }
 
-double calculate_nums(int top, int bottom, std::string ope)
+double calculate_nums(double top, double bottom, std::string ope)
 {
     double answer = 1 ;
     if (ope == "+"){answer = top + bottom ;}
@@ -167,5 +168,6 @@ double calculate_nums(int top, int bottom, std::string ope)
         {
             answer = answer * bottom ;
         }
+    
     return answer ;
 }
